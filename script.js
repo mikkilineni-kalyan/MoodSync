@@ -10,6 +10,7 @@ const playlistContainer = document.getElementById('playlist-container');
 let isWebcamRunning = false;
 let currentMood = null;
 let detectionInterval = null;
+let modelsLoaded = false;
 
 // Mood to Music Genre Mapping
 const moodToGenre = {
@@ -51,16 +52,26 @@ const songDatabase = {
 // Initialize face-api.js
 async function initFaceAPI() {
     try {
-        await faceapi.nets.tinyFaceDetector.loadFromUri('https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@master/weights');
-        await faceapi.nets.faceLandmark68Net.loadFromUri('https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@master/weights');
-        await faceapi.nets.faceRecognitionNet.loadFromUri('https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@master/weights');
-        await faceapi.nets.faceExpressionNet.loadFromUri('https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@master/weights');
+        // Show loading message
+        detectedMoodElement.textContent = 'Loading models...';
+        
+        // Define model URLs
+        const MODEL_URL = 'https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights';
+        
+        // Load models
+        await Promise.all([
+            faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+            faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+            faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL)
+        ]);
         
         console.log('Face-API models loaded successfully');
+        modelsLoaded = true;
         startButton.disabled = false;
+        detectedMoodElement.textContent = 'Models loaded. Click Start Camera';
     } catch (error) {
         console.error('Error loading Face-API models:', error);
-        detectedMoodElement.textContent = 'Error loading emotion detection';
+        detectedMoodElement.textContent = 'Error loading models. Please refresh';
     }
 }
 
@@ -92,7 +103,7 @@ async function startWebcam() {
 
 // Detect emotions
 async function detectEmotion() {
-    if (!isWebcamRunning) return;
+    if (!isWebcamRunning || !modelsLoaded) return;
     
     const displaySize = { 
         width: webcamElement.videoWidth, 
