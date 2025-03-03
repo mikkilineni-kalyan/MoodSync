@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodSync - Mood-Based Music Recommendations</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Face-api.js for emotion detection -->
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MoodSync</h1>
+            <p>Let your emotions guide your music</p>
+        </header>
+
+        <main>
+            <div class="webcam-container">
+                <video id="webcam" autoplay muted playsinline></video>
+                <canvas id="overlay"></canvas>
+                <div id="mood-display">
+                    <h2>Your Mood: <span id="detected-mood">Analyzing...</span></h2>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="start-btn">Start Camera</button>
+                <button id="find-music-btn" disabled>Find Music</button>
+            </div>
+
+            <div class="music-recommendations">
+                <h2>Recommended Songs</h2>
+                <div id="playlist-container">
+                    <p class="placeholder-text">Your mood-based recommendations will appear here</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>MoodSync &copy; 2025 - Emotion-based music recommendations</p>
+        </footer>
+    </div>
+</body>
+</html>
