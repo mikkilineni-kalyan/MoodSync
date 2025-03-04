@@ -144,6 +144,154 @@ button:disabled {
     box-shadow: none;
 }
 
+/* Text Mood Input Styles */
+.text-mood-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.text-mood-container h3 {
+    margin-bottom: 10px;
+    color: #4776E6;
+    text-align: center;
+}
+
+.text-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#mood-text {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+#analyze-text-btn {
+    align-self: flex-end;
+}
+
+/* Detection Settings Styles */
+.detection-settings {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.detection-settings h3 {
+    margin-bottom: 15px;
+    color: #4776E6;
+    text-align: center;
+}
+
+.setting-group {
+    margin-bottom: 15px;
+}
+
+.setting-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.setting-group input[type="range"] {
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.setting-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #4776E6;
+    cursor: pointer;
+}
+
+.setting-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+/* Toggle Switch Styles */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-left: 10px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+    background-color: #4776E6;
+}
+
+input:focus + .toggle-slider {
+    box-shadow: 0 0 1px #4776E6;
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+}
+
+/* Error Message Styles */
+.error-message {
+    color: #e74c3c;
+    background-color: rgba(231, 76, 60, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
 /* Music Recommendations Styles */
 .music-recommendations {
     background-color: white;
@@ -160,21 +308,25 @@ button:disabled {
 
 #playlist-container {
     min-height: 200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
 }
 
 .song-item {
     display: flex;
     align-items: center;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 8px;
     background-color: #f9f9f9;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .song-item:hover {
     background-color: #f0f0f0;
-    transform: translateX(5px);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .song-thumbnail {
@@ -216,12 +368,19 @@ button:disabled {
     text-decoration: none;
     border-radius: 5px;
     font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.song-link a:hover {
+    background-color: #3a67d4;
+    transform: scale(1.05);
 }
 
 .placeholder-text {
     text-align: center;
     color: #999;
     padding: 50px 0;
+    grid-column: 1 / -1;
 }
 
 /* Footer Styles */

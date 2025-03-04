@@ -1,0 +1,18 @@
+{
+  "name": "moodsync",
+  "version": "1.0.0",
+  "description": "A web application that detects mood through facial expression analysis and recommends music",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mood",
+    "music",
+    "facial-recognition",
+    "emotion-detection"
+  ],
+  "author": "",
+  "license": "MIT"
+}

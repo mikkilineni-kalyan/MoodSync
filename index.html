@@ -8,6 +8,7 @@
     <!-- Face-api.js for emotion detection -->
     <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     <script defer src="script.js"></script>
+    <script defer src="test.js"></script>
 </head>
 <body>
     <div class="container">
@@ -28,6 +29,31 @@
             <div class="controls">
                 <button id="start-btn">Start Camera</button>
                 <button id="find-music-btn" disabled>Find Music</button>
+                
+                <div class="text-mood-container">
+                    <h3>Or tell us how you feel</h3>
+                    <div class="text-input-group">
+                        <textarea id="mood-text" placeholder="Describe your feelings or what kind of music you're in the mood for..."></textarea>
+                        <button id="analyze-text-btn">Analyze Text</button>
+                    </div>
+                </div>
+                
+                <div class="detection-settings">
+                    <h3>Detection Settings</h3>
+                    <div class="setting-group">
+                        <label for="detection-sensitivity">Detection Sensitivity:</label>
+                        <input type="range" id="detection-sensitivity" min="1" max="10" value="5">
+                    </div>
+                    <div class="setting-group">
+                        <label for="detection-frequency">Detection Frequency:</label>
+                        <select id="detection-frequency">
+                            <option value="500">Very High (0.5s)</option>
+                            <option value="1000" selected>High (1s)</option>
+                            <option value="2000">Medium (2s)</option>
+                            <option value="3000">Low (3s)</option>
+                        </select>
+                    </div>
+                </div>
             </div>
 
             <div class="music-recommendations">
